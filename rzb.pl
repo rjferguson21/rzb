@@ -5,6 +5,7 @@ use Data::Dumper;
 use Getopt::Long;
 use Number::Format qw(:subs);
 use IMDB::Film;
+use YAML qw(LoadFile);
 
 sub download;
 sub search;
@@ -24,6 +25,11 @@ my $category  = "21";
 # Configuration
 my $imdbFetch = 0;
 my $pageSize  = 20;
+
+my $config = LoadFile('rzb_config.yaml');
+
+$apikey = $config->{api_key};
+$username = $config->{username};
 
 my %categories = (
   EVERYTHING => '0',
